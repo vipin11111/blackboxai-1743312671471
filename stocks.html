@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market - FinDash</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .sidebar {
+            background-color: #1e293b;
+        }
+        .card {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="flex h-screen">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar w-64 text-white p-4">
+        <div class="flex items-center space-x-2 mb-8">
+            <i class="fas fa-chart-line text-blue-400 text-2xl"></i>
+            <h1 class="text-xl font-bold">FinDash</h1>
+        </div>
+        <nav>
+            <ul class="space-y-2">
+                <li>
+                    <a href="index.html" class="flex items-center space-x-2 p-2 rounded hover:bg-slate-700">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center space-x-2 p-2 rounded bg-slate-700">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Stocks</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="portfolio.html" class="flex items-center space-x-2 p-2 rounded hover:bg-slate-700">
+                        <i class="fas fa-wallet"></i>
+                        <span>Portfolio</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 overflow-auto p-6">
+        <header class="flex justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold text-slate-800">Stock Market</h2>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search stocks..." class="pl-8 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stock Search Results -->
+        <div class="card p-6 rounded-lg mb-8">
+            <h3 class="text-lg font-semibold mb-4">Popular Stocks</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Stock Card 1 -->
+                <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="font-semibold">Apple Inc.</h4>
+                            <p class="text-gray-500 text-sm">AAPL</p>
+                        </div>
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                            <span class="text-blue-600 font-bold">A</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-2xl font-bold">$172.50</p>
+                            <p class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 1.2%</p>
+                        </div>
+                        <button class="px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">View</button>
+                    </div>
+                </div>
+
+                <!-- Stock Card 2 -->
+                <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="font-semibold">Microsoft</h4>
+                            <p class="text-gray-500 text-sm">MSFT</p>
+                        </div>
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                            <span class="text-blue-600 font-bold">M</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-2xl font-bold">$302.15</p>
+                            <p class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 0.8%</p>
+                        </div>
+                        <button class="px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">View</button>
+                    </div>
+                </div>
+
+                <!-- Stock Card 3 -->
+                <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="font-semibold">Google</h4>
+                            <p class="text-gray-500 text-sm">GOOGL</p>
+                        </div>
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                            <span class="text-blue-600 font-bold">G</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-2xl font-bold">$1,372.50</p>
+                            <p class="text-red-500 text-sm"><i class="fas fa-arrow-down"></i> 0.5%</p>
+                        </div>
+                        <button class="px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">View</button>
+                    </div>
+                </div>
+
+                <!-- Stock Card 4 -->
+                <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h4 class="font-semibold">Amazon</h4>
+                            <p class="text-gray-500 text-sm">AMZN</p>
+                        </div>
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                            <span class="text-blue-600 font-bold">A</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <div>
+                            <p class="text-2xl font-bold">$3,245.60</p>
+                            <p class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 2.1%</p>
+                        </div>
+                        <button class="px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stock Detail Section -->
+        <div class="card p-6 rounded-lg">
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                        <span class="text-blue-600 font-bold text-xl">A</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Apple Inc.</h3>
+                        <p class="text-gray-500">AAPL • NASDAQ • Technology</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-2xl font-bold">$172.50</p>
+                    <p class="text-green-500"><i class="fas fa-arrow-up"></i> 1.2% ($2.05)</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                <div class="space-y-2">
+                    <p class="text-gray-500">Market Cap</p>
+                    <p class="text-lg font-semibold">$2.83T</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-gray-500">P/E Ratio</p>
+                    <p class="text-lg font-semibold">28.76</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-gray-500">Dividend Yield</p>
+                    <p class="text-lg font-semibold">0.52%</p>
+                </div>
+            </div>
+
+            <!-- Stock Price Chart -->
+            <div class="mb-6">
+                <div class="flex space-x-2 mb-4">
+                    <button class="px-3 py-1 text-sm bg-blue-100 text-blue-600 rounded">1D</button>
+                    <button class="px-3 py-1 text-sm bg-blue-100 text-blue-600 rounded">1W</button>
+                    <button class="px-3 py-1 text-sm bg-blue-500 text-white rounded">1M</button>
+                    <button class="px-3 py-1 text-sm bg-blue-100 text-blue-600 rounded">1Y</button>
+                    <button class="px-3 py-1 text-sm bg-blue-100 text-blue-600 rounded">5Y</button>
+                </div>
+                <canvas id="stockChart" height="300"></canvas>
+            </div>
+
+            <!-- Stock News -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Latest News</h3>
+                <div class="space-y-4">
+                    <div class="border-b pb-4">
+                        <h4 class="font-medium">Apple announces new AI features for iOS 18</h4>
+                        <p class="text-gray-500 text-sm">2 hours ago • TechCrunch</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-medium">Apple stock reaches all-time high after earnings report</h4>
+                        <p class="text-gray-500 text-sm">1 day ago • Bloomberg</p>
+                    </div>
+                    <div class="border-b pb-4">
+                        <h4 class="font-medium">Analysts raise price target for Apple citing strong services growth</h4>
+                        <p class="text-gray-500 text-sm">3 days ago • CNBC</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize stock price chart
+        const stockCtx = document.getElementById('stockChart').getContext('2d');
+        const stockChart = new Chart(stockCtx, {
+            type: 'line',
+            data: {
+                labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10', 'Day 11', 'Day 12', 'Day 13', 'Day 14', 'Day 15', 'Day 16', 'Day 17', 'Day 18', 'Day 19', 'Day 20', 'Day 21', 'Day 22', 'Day 23', 'Day 24', 'Day 25', 'Day 26', 'Day 27', 'Day 28', 'Day 29', 'Day 30'],
+                datasets: [{
+                    label: 'AAPL Price',
+                    data: [170.12, 169.50, 168.75, 169.80, 170.25, 170.50, 171.00, 171.25, 171.50, 171.75, 172.00, 172.25, 172.50, 172.25, 172.00, 171.75, 171.50, 171.25, 171.00, 170.75, 170.50, 170.25, 170.00, 170.25, 170.50, 170.75, 171.00, 171.25, 171.50, 172.50],
+                    borderColor: '#3B82F6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.1,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
